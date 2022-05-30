@@ -29,7 +29,7 @@
 .hero{
     padding: 1.5rem;
     width: min(50rem, 100%);
-    margin: 5rem auto;
+    margin: 6rem auto;
     // position: absolute;
     // top: 50%;
     // left: 50%;
@@ -127,16 +127,23 @@
 
 .grid{
     padding: 0 6rem 2rem 6rem;
-    border: 1px solid red;
+    border-top: 1px solid rgba(255, 255, 255, .2);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 3rem;
 
+    @media screen and (max-width: 800px) {
+        padding: 0 1.5rem 0 1.5rem;
+    }
+
     &__item{
         padding: 2.5rem;
+        border-top: 3px solid transparent;
+        transition: all 200ms ease;
 
         &:hover{
             background-color: @color-white;
+            border-top: 3px solid @color-primary;
 
             .grid__item__title{
                 color: @color-gray;
@@ -151,23 +158,38 @@
             }
         }
 
+        img{
+            width: 2.5rem;
+            height: 2.5rem;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
         &__title{
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
             color: @color-white;
+            text-transform: uppercase;
+            transition: all 200ms ease;
         }
 
         &__text{
-            width: min(16rem, 100%);
             font-size: .85rem;
             color: @color-white;
-            margin-top: .5rem;
+            margin-top: 1rem;
+            transition: all 200ms ease;
         }
 
         a{
             font-size: .85rem;
             color: @color-white;
             font-weight: 600;
+            transition: all 200ms ease;
+
+            &:hover{
+                color: @color-primary-2;
+            }
         }
     }
 }

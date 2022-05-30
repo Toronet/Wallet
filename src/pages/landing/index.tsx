@@ -151,27 +151,33 @@ const Landing: React.FC = (): JSX.Element => {
 
       <div className={styles.grid}>
         <div className={styles.grid__item}>
+          <img src={IMAGES.cubes} alt="cubes" />
           <h3 className={styles.grid__item__title}>Experienced</h3>
           <p className={styles.grid__item__text}>
-            Reliable solution for your token development.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Nisi eum sint quibusdam vero?
           </p>
-          <a>Read more</a>
+          <a href="https://google.com" target="_blank" rel="noreferrer">Read more</a>
         </div>
+
         <div className={styles.grid__item}>
+          <img src={IMAGES.cubes} alt="cubes" />
           <h3 className={styles.grid__item__title}>Your partners</h3>
           <p className={styles.grid__item__text}>
-            With the US regulations. Legal advice
-            by specialists experiences in ICO.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Nisi eum sint quibusdam vero?
           </p>
-          <a>Read more</a>
+          <a href="https://google.com" target="_blank" rel="noreferrer">Read more</a>
         </div>
+
         <div className={styles.grid__item}>
+          <img src={IMAGES.cubes} alt="cubes" />
           <h3 className={styles.grid__item__title}>Technical Proficient</h3>
           <p className={styles.grid__item__text}>
-            Ensure soundness of the business model at the
-            root of your ICO.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Nisi eum sint quibusdam vero?
           </p>
-          <a>Read more</a>
+          <a href="https://google.com" target="_blank" rel="noreferrer">Read more</a>
         </div>
       </div>
 

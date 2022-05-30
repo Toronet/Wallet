@@ -12,6 +12,7 @@ import wallet from '../assets/learn-wallet.png';
 import ether from '../assets/learn-eth.png';
 import mining from '../assets/learn-mining.jpg';
 import eth_bg from '../assets/eth-bg.png';
+import cubes from '../assets/cubes.png';
 
 const IMAGES = Object.freeze({
     logo_brand,
@@ -28,6 +29,7 @@ const IMAGES = Object.freeze({
     ether,
     mining,
     eth_bg,
+    cubes,
 });
 
 export default IMAGES;
