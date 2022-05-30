@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-function App() {
+import Landing from './pages/landing';
+import NotFound from './pages/404';
+import Dashboard from './pages/dashboard';
+import Tokens from './pages/dashboard/tokens';
+import Invites from './pages/dashboard/invites';
+import FiatCoins from './pages/dashboard/fiat-coins';
+import PlatformCoins from './pages/dashboard/platform-coins';
+import CryptoCurrencies from './pages/dashboard/crypto-currencies';
+
+import ScrollReset from './components/utils/ScrollReset';
+import PrivateRoute from './components/utils/PrivateRoute';
+import OfflineNotice from './components/ui/Offline-Notice';
+
+import { useAppSelector } from './hooks/redux';
+
+const App: React.FC = (): JSX.Element => {
+  const { user } = useAppSelector(state => state.auth);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <ScrollReset />
+      <OfflineNotice />
+
+      <Routes>
+        <Route index element={<Navigate to="/home" replace={true} />} />
+        <Route path="/home" element={<Landing />} />
+
+        <Route path="dashboard" element={<PrivateRoute user={user} />}>
+          <Route index element={<Dashboard />} />
+          <Route path="tokens" element={<Tokens />} />
+          <Route path="fiat-coins" element={<FiatCoins />} />
+          <Route path="platform-coins" element={<PlatformCoins />} />
+          <Route path="crypto-currencies" element={<CryptoCurrencies />} />
+          <Route path="invites" element={<Invites />} />
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+
+  )
 }
 
 export default App;

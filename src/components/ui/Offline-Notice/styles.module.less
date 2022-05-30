@@ -1,0 +1,40 @@
+@import "../../../styles/variables.less";
+
+.container{
+    position: fixed;
+    top: 12%;
+    right: 1%;
+    transform: translate(-1%, -12%);
+    width: 25rem;
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: rgba(222, 47, 64, .95);
+    z-index: 1000;
+    color: @color-white;
+
+    h3{
+        font-size: .9rem;
+        font-weight: 600;
+        color: @color-white;
+    }
+
+    p{
+        margin: 0.3rem 0 0 0;
+        font-size: .8rem;
+    }
+
+    &__close{
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: @color-white;
+    }
+
+    @media screen and (max-width: 560px){
+        width: 90%;
+        top: 10%;
+        left: 50%;
+        right: 0;
+        transform: translate(-50%, -10%);
+    }
+}

@@ -1,0 +1,168 @@
+@import "../../styles/variables.less";
+@import "../../styles/mixins.less";
+
+.title{
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: @color-gray;
+    opacity: .9;
+}
+
+.banner{
+    background-color: @color-light-primary;
+
+    &__info{
+        &__title{
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: @color-gray;
+            word-break: break-all;
+        }
+
+        &__text{
+            width: 85%;
+            margin-top: 1rem;
+            font-size: .9rem;
+            margin-bottom: 2rem;
+
+            @media screen and (width: 600px){
+                width: 100%;
+            }
+        }
+    }
+}
+
+.crypto{
+    position: relative;
+
+    &__label{
+        font-size: .7rem;
+        font-weight: 600;
+        opacity: .85;
+        text-transform: uppercase;
+        margin-bottom: .5rem;
+    }
+
+    &__title {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin: .5rem 0;
+    }
+
+    &__text{
+        margin: 0;
+    }
+
+    &__img{
+        display: block;
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-left: auto;
+        object-fit: cover;
+    }
+
+    &__badge{
+        position: absolute;
+        top: .5rem;
+        right: 1rem;
+        font-size: .55rem;
+        font-weight: 700;
+        opacity: .25;
+        text-transform: uppercase;
+        color: @color-gray;
+    }
+
+    .inactive{
+        filter: grayscale(1);
+    }
+}
+
+.spacer{
+    margin-top: 2rem;
+}
+
+.transactions{
+    &__title{
+        font-size: 1rem;
+        font-weight: 700;
+        color: @color-gray;
+        opacity: .9;
+    }
+
+    &__table{
+        margin-top: 2rem;
+
+        &__hash{
+            width: 16rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 0;
+            color: @color-primary-2;
+            cursor: pointer;
+        }
+        
+        &__user{
+            width: 16rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 0;
+            color: @color-danger;
+            cursor: pointer;
+        }
+    }  
+}
+
+.tokens {
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: @color-gray;
+        opacity: .9;
+        margin-bottom: 2rem;
+    }
+
+    &__item{
+        position: relative;
+
+        &__img{
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: @color-light-primary;
+            color: @color-primary-2;
+            font-weight: 700;
+            .flex-row-center-all;
+        }
+
+        &__title{
+            font-size: .75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            opacity: .85;
+        }
+
+        &__text{
+            font-weight: 700;
+            font-size: .9rem;
+            margin: .5rem 0 0 0;
+
+            span{
+                margin-left: .5rem;
+                font-weight: 400;
+            }
+        }
+
+        &__badge {
+            position: absolute;
+            top: -.5rem;
+            right: .5rem;
+            font-size: .55rem;
+            font-weight: 700;
+            opacity: .25;
+            text-transform: uppercase;
+            color: @color-gray;
+        }
+    }
+}

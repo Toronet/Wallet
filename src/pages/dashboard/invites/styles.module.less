@@ -1,0 +1,50 @@
+@import "../../../styles/variables.less";
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: @color-gray;
+    opacity: .9;
+}
+
+.spacer{
+    margin: 2rem 0;
+}
+
+.invite{
+    background-color: @color-white;
+
+    &__title{
+        font-size: 1.5rem;
+        font-weight: 800;
+        line-height: 2.3rem;
+        margin-bottom: 1rem;
+        //text-align: center;
+    }
+
+    &__text{
+        font-size: .95rem;
+        opacity: .9;
+        margin-bottom: 2rem;
+    }
+
+    &__animation{
+        width: 16rem;
+        height: 16rem;
+        margin: 1rem auto;
+    }
+}
+
+.list__text{
+    word-break: break-all;
+}
+
+.invites__table__user{
+    width: 18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+    color: @color-primary-2;
+    cursor: pointer;
+}
