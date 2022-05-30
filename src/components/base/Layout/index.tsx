@@ -5,6 +5,7 @@ import { Layout, Menu, Row, Col, Badge, Dropdown, Divider } from 'antd';
 import { AppstoreOutlined, GiftOutlined, GiftFilled, DollarCircleOutlined, BellFilled, CloudServerOutlined, QuestionCircleOutlined, UserOutlined, SettingOutlined, LineChartOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 
 import styles from './styles.module.less';
+import OfflineNotice from '../../ui/Offline-Notice';
 
 import IMAGES from '../../../constants/images';
 import { logoutUser } from '../../../redux/auth/auth-slice';
@@ -186,6 +187,8 @@ const AppLayout: React.FC<TProps> = ({ children, title, description, theme }): J
                     </ul>
                 </Footer>
             </Layout>
+
+            <OfflineNotice />
         </Layout>
     )
 }

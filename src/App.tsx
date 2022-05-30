@@ -12,7 +12,6 @@ import CryptoCurrencies from './pages/dashboard/crypto-currencies';
 
 import ScrollReset from './components/utils/ScrollReset';
 import PrivateRoute from './components/utils/PrivateRoute';
-import OfflineNotice from './components/ui/Offline-Notice';
 
 import { useAppSelector } from './hooks/redux';
 
@@ -21,7 +20,6 @@ const App: React.FC = (): JSX.Element => {
   return (
     <Router>
       <ScrollReset />
-      <OfflineNotice />
 
       <Routes>
         <Route index element={<Navigate to="/home" replace={true} />} />
