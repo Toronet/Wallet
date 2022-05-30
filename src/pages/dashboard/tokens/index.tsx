@@ -116,6 +116,7 @@ const TABS = [
 
 const Tokens: React.FC = (): JSX.Element => {
     const { user } = useAppSelector(state => state.auth);
+    const { balanceStatus } = useAppSelector(state => state.balances);
     const { transactions, transactionStatus, minting } = useAppSelector(state => state.transactions);
     const dispatch = useAppDispatch();
 
@@ -182,6 +183,7 @@ const Tokens: React.FC = (): JSX.Element => {
     };
 
     const toggleModal = (): void => {
+        if (balanceStatus === 'pending') return;
         setopen(prevState => !prevState);
     };
 

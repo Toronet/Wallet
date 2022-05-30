@@ -304,6 +304,7 @@ const ExchangeFrom: React.FC<TProps> = ({ callback }): JSX.Element => {
                                 htmlType='submit'
                                 className={styles.button}
                                 loading={calculating === 'pending'}
+                                disabled={balanceStatus === 'pending'}
                             >
                                 CONTINUE
                             </Button>

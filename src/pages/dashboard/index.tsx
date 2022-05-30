@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie from "lottie-react";
+import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 import { Divider, TableColumnsType, Tag } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import { Row, Col, Card, Breadcrumb, Button, Tooltip, Table, message } from 'antd';
@@ -320,65 +321,66 @@ const Dashboard: React.FC = (): JSX.Element => {
             </h3>
 
             <div className={styles.tokens__item}>
-              <Row gutter={[24, 24]} align="middle">
-                <Col>
-                  <figure className={styles.tokens__item__img}>
-                    TR
-                  </figure>
-                </Col>
+              <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
                   <h3 className={styles.tokens__item__title}>toro token</h3>
                   <p className={styles.tokens__item__text}>
-                    {Number(balances?.bal_toro).toFixed(2)} <Tag color="success">+0.48%</Tag>
+                    {Number(balances?.bal_toro).toFixed(2)}
                   </p>
+                </Col>
+                <Col xl={10}>
+                  <Sparklines data={[5, 10, 5, 20, 8, 15]}>
+                    <SparklinesLine color="green" />
+                    <SparklinesSpots />
+                  </Sparklines>
                 </Col>
               </Row>
             </div>
             <Divider />
             <div className={styles.tokens__item}>
-              <Row gutter={[24, 24]} align="middle">
-                <Col>
-                  <figure className={styles.tokens__item__img}>
-                    PT
-                  </figure>
-                </Col>
+              <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
                   <h3 className={styles.tokens__item__title}>plast token</h3>
                   <p className={styles.tokens__item__text}>
-                    {Number(balances?.bal_plast).toFixed(2)} <Tag color="error">-0.25%</Tag>
+                    {Number(balances?.bal_plast).toFixed(2)}
                   </p>
+                </Col>
+                <Col xl={10}>
+                  <Sparklines data={[5, 5, 2, 7, 8, 6]}>
+                    <SparklinesLine color="red" />
+                  </Sparklines>
                 </Col>
               </Row>
             </div>
             <Divider />
             <div className={styles.tokens__item}>
-              <Row gutter={[24, 24]} align="middle">
-                <Col>
-                  <figure className={styles.tokens__item__img}>
-                    ES
-                  </figure>
-                </Col>
+              <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
                   <h3 className={styles.tokens__item__title}>espees token</h3>
                   <p className={styles.tokens__item__text}>
-                    {Number(balances?.bal_espees).toFixed(2)} <Tag color="error">-0.25%</Tag>
+                    {Number(balances?.bal_espees).toFixed(2)}
                   </p>
+                </Col>
+                <Col xl={10}>
+                  <Sparklines data={[5, 9, 3, 4, 6, 6]}>
+                    <SparklinesLine color="red" />
+                  </Sparklines>
                 </Col>
               </Row>
             </div>
             <Divider />
             <div className={styles.tokens__item}>
-              <Row gutter={[24, 24]} align="middle">
-                <Col>
-                  <figure className={styles.tokens__item__img}>
-                    AZ
-                  </figure>
-                </Col>
+              <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
                   <h3 className={styles.tokens__item__title}>aza token</h3>
                   <p className={styles.tokens__item__text}>
                     0.00
                   </p>
+                </Col>
+                <Col xl={10}>
+                  <Sparklines data={[5, 10, 5, 20, 8, 15]}>
+                    <SparklinesLine color="green" />
+                  </Sparklines>
                 </Col>
               </Row>
             </div>
