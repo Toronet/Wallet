@@ -16,7 +16,7 @@ The Toronet dashboard client is proudly powered by popular javascript "framework
 
 ## How to use
 
-To get started with a local copy of the Toronet web dashboard, clone this repo or download the source code via Github above then rum these commands in the exact order.
+To get started with a local copy of the Toronet web dashboard, clone this repo or download the source code via Github then execute the following commands in the root of the project's terminal in the exact order given below.
 
 ```js
 npm install
@@ -26,6 +26,10 @@ npm install
 npm start
 ```
 
-## Code-base structure
+## Folder structure walkthrough
 
-The codebase is broken down into serveral sections
+The codebase is broken down into serveral sections. Find below a brief breakdown of each section and their corresponding responsibilties.
+
+- Assets: Like the name implies, this is the folder were all assets (images, animations, videos etc) are kept.
+
+- Components: The component folder ...
