@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie from "lottie-react";
+import Marquee from "react-fast-marquee";
 import { Divider, TableColumnsType, Tag } from 'antd';
 import { Row, Col, Card, Button, Tooltip, Table, message } from 'antd';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
@@ -139,7 +140,8 @@ const Dashboard: React.FC = (): JSX.Element => {
 
   return (
     <AppLayout title="Toronet Dashboard" description="Access your dashboard and get up-to date information about your TORO tokens and cryptocurrencies">
-      <Row className={styles.spacer}>
+
+      <Row>
         <Col lg={24}>
           <Card bordered={false} bodyStyle={{ padding: '2rem' }} className={styles.banner}>
             <Row gutter={[0, 48]} justify='space-between' align="middle">
@@ -168,6 +170,155 @@ const Dashboard: React.FC = (): JSX.Element => {
           </Card>
         </Col>
       </Row>
+
+      <Marquee pauseOnHover className={styles.spacer}>
+        <div className={styles.coins}>
+          <Row gutter={[12, 0]} align="middle">
+            <Col>
+              <figure className={styles.coins__img}>
+                <span>TU</span>
+              </figure>
+            </Col>
+            <Col>
+              <p className={styles.coins__subtitle}>
+                Toro usd
+              </p>
+            </Col>
+          </Row>
+          <h3 className={styles.coins__title}>
+            {Number(balances?.bal_toro).toFixed(2)} <sup>TUSD</sup>
+          </h3>
+          <span className={`${styles.coins__text} ${styles.danger}`}>
+            -2.42 (-2.05)
+          </span>
+        </div>
+
+        <div className={styles.coins}>
+          <Row gutter={[12, 0]} align="middle">
+            <Col>
+              <figure className={styles.coins__img}>
+                <span>TE</span>
+              </figure>
+            </Col>
+            <Col>
+              <p className={styles.coins__subtitle}>
+                Toro egp
+              </p>
+            </Col>
+          </Row>
+          <h3 className={styles.coins__title}>
+            {Number(balances?.bal_egp).toFixed(2)} <sup>TEGP</sup>
+          </h3>
+          <span className={`${styles.coins__text} ${styles.success}`}>
+            +141.42 (+1.03)
+          </span>
+        </div>
+
+        <div className={styles.coins}>
+          <Row gutter={[12, 0]} align="middle">
+            <Col>
+              <figure className={styles.coins__img}>
+                <span>TR</span>
+              </figure>
+            </Col>
+            <Col>
+              <p className={styles.coins__subtitle}>
+                Toro euro
+              </p>
+            </Col>
+          </Row>
+          <h3 className={styles.coins__title}>
+            {Number(balances?.bal_euro).toFixed(2)} <sup>TEUR</sup>
+          </h3>
+          <span className={`${styles.coins__text} ${styles.success}`}>
+            +55.42 (+1.16)
+          </span>
+        </div>
+
+        <div className={styles.coins}>
+          <Row gutter={[12, 0]} align="middle">
+            <Col>
+              <figure className={styles.coins__img}>
+                <span>TP</span>
+              </figure>
+            </Col>
+            <Col>
+              <p className={styles.coins__subtitle}>
+                Toro gbp
+              </p>
+            </Col>
+          </Row>
+          <h3 className={styles.coins__title}>
+            {Number(balances?.bal_pound).toFixed(2)} <sup>TGBP</sup>
+          </h3>
+          <span className={`${styles.coins__text} ${styles.success}`}>
+            +141.42 (+1.03)
+          </span>
+        </div>
+
+        <div className={styles.coins}>
+          <Row gutter={[12, 0]} align="middle">
+            <Col>
+              <figure className={styles.coins__img}>
+                <span>TK</span>
+              </figure>
+            </Col>
+            <Col>
+              <p className={styles.coins__subtitle}>
+                Toro ksh
+              </p>
+            </Col>
+          </Row>
+          <h3 className={styles.coins__title}>
+            {Number(balances?.bal_ksh).toFixed(2)} <sup>TKSH</sup>
+          </h3>
+          <span className={`${styles.coins__text} ${styles.danger}`}>
+            -141.42 (-1.03)
+          </span>
+        </div>
+
+        <div className={styles.coins}>
+          <Row gutter={[12, 0]} align="middle">
+            <Col>
+              <figure className={styles.coins__img}>
+                <span>TN</span>
+              </figure>
+            </Col>
+            <Col>
+              <p className={styles.coins__subtitle}>
+                Toro NGN
+              </p>
+            </Col>
+          </Row>
+          <h3 className={styles.coins__title}>
+            {Number(balances?.bal_naira).toFixed(2)} <sup>TNGN</sup>
+          </h3>
+          <span className={`${styles.coins__text} ${styles.danger}`}>
+            -8.42 (-0.03)
+          </span>
+        </div>
+
+        <div className={styles.coins}>
+          <Row gutter={[12, 0]} align="middle">
+            <Col>
+              <figure className={styles.coins__img}>
+                <span>TZ</span>
+              </figure>
+            </Col>
+            <Col>
+              <p className={styles.coins__subtitle}>
+                Toro zar
+              </p>
+            </Col>
+          </Row>
+          <h3 className={styles.coins__title}>
+            {Number(balances?.bal_zar).toFixed(2)} <sup>TZAR</sup>
+          </h3>
+          <span className={`${styles.coins__text} ${styles.success}`}>
+            +47.25 (+2.05)
+          </span>
+        </div>
+      </Marquee>
 
       <Row gutter={[12, 24]} className={styles.spacer}>
         <Col xl={6} lg={6} md={12} sm={12} xs={24}>

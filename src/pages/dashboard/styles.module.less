@@ -25,6 +25,49 @@
     }
 }
 
+.coins{
+    width: 15rem;
+    border: 1px solid @color-light-gray-5;
+    padding: .5rem 1rem;
+    margin-right: 1rem;
+
+    &__img{
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        .flex-row-center-all;
+        background-color: @color-primary-2;
+        color: @color-white;
+        font-weight: 600;
+        font-size: .6rem;
+    }
+
+    &__subtitle{
+        margin: 0;
+        text-transform: uppercase;
+        font-size: .75rem;
+    }
+
+    &__title{
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: .5rem 0;
+    }
+
+    &__text{
+        font-size: .85rem;
+        margin-right: .5rem;
+    }
+
+    .danger{
+        color: @color-danger;
+    }
+
+    .success{
+        color: @color-success;
+    }
+}
+
 .crypto{
     position: relative;
 

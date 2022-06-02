@@ -155,7 +155,7 @@ const Withdrawal: React.FC<TProps> = ({ coins, selectedCoin, callback }): JSX.El
                                 >
                                     <Select size="large">
                                         {coins.map(coin => (
-                                            <Option value={coin.currency}>
+                                            <Option key={coin.id} value={coin.currency}>
                                                 {coin.name}
                                             </Option>
                                         ))}
