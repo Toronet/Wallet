@@ -38,7 +38,7 @@ The codebase is broken down into serveral sections. Find below a brief breakdown
   - **UI components**: Ui components are like base components only they are more larger in terms of scope. They are elements like a confirmation modal, a tab screen, a banner card etc..
   - **Utility components**: These are helper components / HOC's that contain specific rules or functionality to assist other components or pages.
 
-- **Constant**: Constants are were data that are used in key sections of the project are kept. They can't be mutated or changed.
+- **Constants**: Constants are were data that are used in key sections of the project are kept. They can't be mutated or changed.
 
 - **Helpers**: Helpers are where functions that abstract some logic to make it easier on other functions are kept. The primary axios helper is kept here. Mostly used in the data layer of the project.
 
@@ -46,9 +46,9 @@ The codebase is broken down into serveral sections. Find below a brief breakdown
 
 - **Pages**: These are where all pages in the project are kept and managed.
 
-- **Redux**: This is the brain of the project. The data layer and global state are kept and managed here.
+- **Redux**: This is the brain of the project. The data layer and global state are kept and managed here. All API calls are "batched" into actions. Knowledge of redux is required before touching anything here!
 
-- **Styles**: This is where all the global style module is kept, alongside other _LESS_ partials like variables, and mixins.
+- **Styles**: This is where all the global style module is kept, alongside other _LESS_ partials like **variables**, and **mixins**.
 
 - **Utils**: These are utility functions that help perform certain actions like; capitalize a text, format a number to a comma separated string etc... Not to be confused with the helpers. These are used
   in the other components or pages.

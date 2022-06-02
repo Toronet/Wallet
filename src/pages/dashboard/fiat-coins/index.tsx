@@ -226,14 +226,19 @@ const FiatCoins: React.FC = (): JSX.Element => {
         }
     }
 
+    const callbacks = (): void => {
+        fetchCurrencyBalance();
+        fetchCoinsTransactions();
+    }
+
     const _renderViews = (): JSX.Element => {
         switch (activeTab) {
             case 'SEND':
-                return <SendTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchCoinsTransactions} />
+                return <SendTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             case 'EXCHANGE_FROM':
-                return <ExchangeFrom coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchCoinsTransactions} />
+                return <ExchangeFrom coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             case 'EXCHANGE_TO':
-                return <ExchangeTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchCoinsTransactions} />
+                return <ExchangeTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             default:
                 return (
                     <Alert
@@ -279,7 +284,7 @@ const FiatCoins: React.FC = (): JSX.Element => {
     }
 
     return (
-        <AppLayout>
+        <AppLayout title="Fiat stable coins" description="Start making transactions with the fiat stable coins on the Toronet platform today">
             <Row gutter={[0, 12]} justify="space-between" align="middle">
                 <Col>
                     <h3 className={styles.title}>

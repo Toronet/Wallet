@@ -222,14 +222,19 @@ const CryptoCurrencies: React.FC = (): JSX.Element => {
         }
     }
 
+    const callbacks = (): void => {
+        fetchBalance();
+        fetchCryptoTransactions();
+    }
+
     const _renderViews = (): JSX.Element => {
         switch (activeTab) {
             case 'SEND':
-                return <SendTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchCryptoTransactions} />
+                return <SendTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             case 'EXCHANGE_FROM':
-                return <ExchangeFrom coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchCryptoTransactions} />
+                return <ExchangeFrom coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             case 'EXCHANGE_TO':
-                return <ExchangeTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchCryptoTransactions} />
+                return <ExchangeTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             default:
                 return (
                     <Alert
@@ -276,7 +281,7 @@ const CryptoCurrencies: React.FC = (): JSX.Element => {
     }
 
     return (
-        <AppLayout>
+        <AppLayout title="Crypto Currencies" description="List your crypto currencies, make withdrawls, deposits & perform transactions all on Toronet today">
             <Row gutter={[0, 12]} justify="space-between" align="middle">
                 <Col>
                     <h3 className={styles.title}>
@@ -302,8 +307,8 @@ const CryptoCurrencies: React.FC = (): JSX.Element => {
                 <Col xl={14} lg={14} md={24} sm={24} xs={24}>
                     <Withdrawal
                         coins={STABLE_COINS}
+                        callback={callbacks}
                         selectedCoin={selectedCoin}
-                        callback={fetchCryptoTransactions}
                     />
                 </Col>
                 <Col xl={10} lg={10} md={24} sm={24} xs={24}>

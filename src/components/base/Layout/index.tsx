@@ -10,6 +10,7 @@ import OfflineNotice from '../../ui/Offline-Notice';
 import IMAGES from '../../../constants/images';
 import { logoutUser } from '../../../redux/auth/auth-slice';
 import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
+import SideMenu from '../../ui/SideMenu';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -25,7 +26,7 @@ const AppLayout: React.FC<TProps> = ({ children, title, description, theme }): J
     const dispatch = useAppDispatch();
 
     const location = useLocation();
-
+    const [drawer, setDrawer] = React.useState(false);
     const [activePath, setActivePath] = React.useState<string>(location.pathname);
 
     const logout = (): void => {
@@ -142,7 +143,7 @@ const AppLayout: React.FC<TProps> = ({ children, title, description, theme }): J
                 <Header className={styles.layout__content__header}>
 
                     <div className={styles.layout__content__header__menu}>
-                        <MenuOutlined />
+                        <MenuOutlined onClick={() => setDrawer(true)} />
                         <img src={IMAGES.logo_brand} alt="toronet" />
                     </div>
                     <span className={styles.layout__content__header__title}>
@@ -189,6 +190,12 @@ const AppLayout: React.FC<TProps> = ({ children, title, description, theme }): J
             </Layout>
 
             <OfflineNotice />
+            <SideMenu
+                open={drawer}
+                close={() => setDrawer(false)}
+                activePath={activePath}
+                handleMenu={handleMenu}
+            />
         </Layout>
     )
 }

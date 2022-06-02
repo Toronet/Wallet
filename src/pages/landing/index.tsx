@@ -140,7 +140,7 @@ const Landing: React.FC = (): JSX.Element => {
             placeholder="Enter your Toronet address..."
           />
           <button onClick={onLogin}>
-            {status === 'pending' ? <LoadingOutlined spin /> : 'Search Address'}
+            {status === 'pending' ? <LoadingOutlined spin /> : 'Sign into Toronet'}
           </button>
         </div>
 

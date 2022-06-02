@@ -163,14 +163,19 @@ const Tokens: React.FC = (): JSX.Element => {
         if (!payload.result) message.error(payload.error);
     }
 
+    const callbacks = (): void => {
+        fetchToroBalance();
+        fetchToroTransactions();
+    }
+
     const _renderViews = (): JSX.Element => {
         switch (activeTab) {
             case 'SEND':
-                return <SendTo callback={fetchToroTransactions} />
+                return <SendTo callback={callbacks} />
             case 'EXCHANGE_FROM':
-                return <ExchangeFrom callback={fetchToroTransactions} />
+                return <ExchangeFrom callback={callbacks} />
             case 'EXCHANGE_TO':
-                return <ExchangeTo callback={fetchToroTransactions} />
+                return <ExchangeTo callback={callbacks} />
             default:
                 return (
                     <Alert
@@ -209,7 +214,7 @@ const Tokens: React.FC = (): JSX.Element => {
     }
 
     return (
-        <AppLayout>
+        <AppLayout title="Toronet tokens" description="Start transacting with some of our finest platform coins">
             <Row gutter={[0, 12]} justify="space-between" align="middle">
                 <Col>
                     <h3 className={styles.title}>

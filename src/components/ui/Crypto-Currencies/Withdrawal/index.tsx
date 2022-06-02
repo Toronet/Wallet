@@ -138,7 +138,6 @@ const Withdrawal: React.FC<TProps> = ({ coins, selectedCoin, callback }): JSX.El
                                 >
                                     <InputNumber
                                         style={{ width: '100%' }}
-                                        min={1}
                                         size="large"
                                         placeholder="10"
                                         addonBefore="ETH"

@@ -119,7 +119,7 @@ const SendTo: React.FC<TProps> = ({ coins, selectedCoin, onSelect, callback }): 
         </Row>
       ) : (
         <h3 className={styles.title}>
-          {Math.floor(Number(cryptoBalance?.balance)).toFixed(2)}
+          {Number(cryptoBalance?.balance).toFixed(2)}
           <sup>{selectedCoin.currency}</sup>
         </h3>
       )}

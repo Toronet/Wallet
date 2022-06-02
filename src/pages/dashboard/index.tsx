@@ -1,9 +1,8 @@
 import React from 'react';
 import Lottie from "lottie-react";
-import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 import { Divider, TableColumnsType, Tag } from 'antd';
-import { HomeOutlined } from '@ant-design/icons';
-import { Row, Col, Card, Breadcrumb, Button, Tooltip, Table, message } from 'antd';
+import { Row, Col, Card, Button, Tooltip, Table, message } from 'antd';
+import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
 import styles from './styles.module.less';
 import AppLayout from '../../components/base/Layout';
@@ -140,25 +139,6 @@ const Dashboard: React.FC = (): JSX.Element => {
 
   return (
     <AppLayout title="Toronet Dashboard" description="Access your dashboard and get up-to date information about your TORO tokens and cryptocurrencies">
-      <Row justify="space-between" align="middle">
-        <Col>
-          <h3 className={styles.title}>
-            Overview
-          </h3>
-        </Col>
-
-        <Col>
-          <Breadcrumb>
-            <Breadcrumb.Item href="">
-              <HomeOutlined />
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="">
-              <span>My Dashboard</span>
-            </Breadcrumb.Item>
-          </Breadcrumb>
-        </Col>
-      </Row>
-
       <Row className={styles.spacer}>
         <Col lg={24}>
           <Card bordered={false} bodyStyle={{ padding: '2rem' }} className={styles.banner}>
@@ -229,7 +209,7 @@ const Dashboard: React.FC = (): JSX.Element => {
               </Col>
             </Row>
             <h3 className={styles.crypto__title}>
-              BTC 46,168.95
+              BTC 0.00
             </h3>
             <Row gutter={[12, 0]} align="middle">
               <Col>
@@ -299,7 +279,7 @@ const Dashboard: React.FC = (): JSX.Element => {
       </Row>
 
       <Row gutter={[12, 12]} className={styles.spacer}>
-        <Col xl={18} lg={18}>
+        <Col xl={18} lg={24} md={24} sm={24} xs={24}>
           <Card className={styles.transactions} loading={transactionStatus === 'pending'}>
             <h3 className={styles.transactions__title}>
               Most recent Toronet transactions
@@ -314,7 +294,7 @@ const Dashboard: React.FC = (): JSX.Element => {
           </Card>
         </Col>
 
-        <Col xl={6}>
+        <Col xl={6} lg={24} md={24} sm={24} xs={24}>
           <Card className={styles.tokens} loading={balancesStatus === 'pending'}>
             <h3 className={styles.tokens__title}>
               All Tokens
@@ -323,12 +303,12 @@ const Dashboard: React.FC = (): JSX.Element => {
             <div className={styles.tokens__item}>
               <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
-                  <h3 className={styles.tokens__item__title}>toro token</h3>
+                  <h3 className={styles.tokens__item__title}>toro</h3>
                   <p className={styles.tokens__item__text}>
                     {Number(balances?.bal_toro).toFixed(2)}
                   </p>
                 </Col>
-                <Col xl={10}>
+                <Col xl={10} lg={5} md={6} sm={6} xs={8}>
                   <Sparklines data={[5, 10, 5, 20, 8, 15]}>
                     <SparklinesLine color="green" />
                     <SparklinesSpots />
@@ -340,12 +320,12 @@ const Dashboard: React.FC = (): JSX.Element => {
             <div className={styles.tokens__item}>
               <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
-                  <h3 className={styles.tokens__item__title}>plast token</h3>
+                  <h3 className={styles.tokens__item__title}>plast</h3>
                   <p className={styles.tokens__item__text}>
                     {Number(balances?.bal_plast).toFixed(2)}
                   </p>
                 </Col>
-                <Col xl={10}>
+                <Col xl={10} lg={5} md={6} sm={6} xs={8}>
                   <Sparklines data={[5, 5, 2, 7, 8, 6]}>
                     <SparklinesLine color="red" />
                   </Sparklines>
@@ -356,12 +336,12 @@ const Dashboard: React.FC = (): JSX.Element => {
             <div className={styles.tokens__item}>
               <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
-                  <h3 className={styles.tokens__item__title}>espees token</h3>
+                  <h3 className={styles.tokens__item__title}>espees</h3>
                   <p className={styles.tokens__item__text}>
                     {Number(balances?.bal_espees).toFixed(2)}
                   </p>
                 </Col>
-                <Col xl={10}>
+                <Col xl={10} lg={5} md={6} sm={6} xs={8}>
                   <Sparklines data={[5, 9, 3, 4, 6, 6]}>
                     <SparklinesLine color="red" />
                   </Sparklines>
@@ -372,12 +352,12 @@ const Dashboard: React.FC = (): JSX.Element => {
             <div className={styles.tokens__item}>
               <Row gutter={[24, 24]} justify="space-between" align="middle">
                 <Col>
-                  <h3 className={styles.tokens__item__title}>aza token</h3>
+                  <h3 className={styles.tokens__item__title}>aza</h3>
                   <p className={styles.tokens__item__text}>
                     0.00
                   </p>
                 </Col>
-                <Col xl={10}>
+                <Col xl={10} lg={5} md={6} sm={6} xs={8}>
                   <Sparklines data={[5, 10, 5, 20, 8, 15]}>
                     <SparklinesLine color="green" />
                   </Sparklines>

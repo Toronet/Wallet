@@ -193,14 +193,19 @@ const PlatformCoins: React.FC = (): JSX.Element => {
         }
     }
 
+    const callbacks = (): void => {
+        fetchBalances();
+        fetchAddrTransactions();
+    }
+
     const _renderViews = (): JSX.Element => {
         switch (activeTab) {
             case 'SEND':
-                return <SendTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchAddrTransactions} />
+                return <SendTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             case 'EXCHANGE_FROM':
-                return <ExchangeFrom coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchAddrTransactions} />
+                return <ExchangeFrom coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             case 'EXCHANGE_TO':
-                return <ExchangeTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={fetchAddrTransactions} />
+                return <ExchangeTo coins={STABLE_COINS} selectedCoin={selectedCoin} onSelect={onSelect} callback={callbacks} />
             default:
                 return (
                     <Alert
@@ -246,7 +251,7 @@ const PlatformCoins: React.FC = (): JSX.Element => {
     }
 
     return (
-        <AppLayout>
+        <AppLayout title="Platform coins" description="Start making transactions with the platform stable coins on the Toronet platform today">
             <Row gutter={[0, 12]} justify="space-between" align="middle">
                 <Col>
                     <h3 className={styles.title}>

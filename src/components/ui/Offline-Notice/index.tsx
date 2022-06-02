@@ -18,10 +18,10 @@ const OfflineNotice: React.FC = (): JSX.Element => {
                                     <Lottie loop animationData={ANIMATIONS.no_wifi} />
                                 </Col>
                                 <Col xl={20} lg={20} md={20} sm={20} xs={20}>
-                                    <h3>Weak / No Internet Connection</h3>
+                                    <h3>Disconnected from Toronet</h3>
                                     <p>
                                         You are currently {online ? "online" : "offline"}.
-                                        Please check your internet connection and try again...
+                                        Weak or no internet signal detected...
                                     </p>
                                 </Col>
                             </Row>
