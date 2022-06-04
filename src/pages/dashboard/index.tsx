@@ -2,7 +2,7 @@ import React from 'react';
 import Lottie from "lottie-react";
 import Marquee from "react-fast-marquee";
 import { Divider, TableColumnsType, Tag } from 'antd';
-import { Row, Col, Card, Button, Tooltip, Table, message } from 'antd';
+import { Row, Col, Card, Button, Tooltip, Table, message, Drawer } from 'antd';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
 import styles from './styles.module.less';
@@ -108,6 +108,7 @@ const Dashboard: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const [greeting] = useGreeting();
+  const [drawer, setDrawer] = React.useState(false);
 
   React.useEffect(() => {
     fetchBalances();
@@ -138,9 +139,12 @@ const Dashboard: React.FC = (): JSX.Element => {
     }
   }
 
+  const toggleDrawer = () => {
+    setDrawer(prevState => !prevState);
+  }
+
   return (
     <AppLayout title="Toronet Dashboard" description="Access your dashboard and get up-to date information about your TORO tokens and cryptocurrencies">
-
       <Row>
         <Col lg={24}>
           <Card bordered={false} bodyStyle={{ padding: '2rem' }} className={styles.banner}>
@@ -157,7 +161,7 @@ const Dashboard: React.FC = (): JSX.Element => {
                     blockchain platforms....
                   </p>
 
-                  <Button type="primary" size="large">
+                  <Button onClick={toggleDrawer} type="primary" size="large">
                     CONTINUE READING
                   </Button>
                 </div>
@@ -172,7 +176,7 @@ const Dashboard: React.FC = (): JSX.Element => {
       </Row>
 
       <Marquee pauseOnHover className={styles.spacer}>
-        <div className={styles.coins}>
+        <Card loading={balancesStatus === 'pending'} bodyStyle={{ padding: 0 }} className={styles.coins}>
           <Row gutter={[12, 0]} align="middle">
             <Col>
               <figure className={styles.coins__img}>
@@ -191,9 +195,9 @@ const Dashboard: React.FC = (): JSX.Element => {
           <span className={`${styles.coins__text} ${styles.danger}`}>
             -2.42 (-2.05)
           </span>
-        </div>
+        </Card>
 
-        <div className={styles.coins}>
+        <Card loading={balancesStatus === 'pending'} bodyStyle={{ padding: 0 }} className={styles.coins}>
           <Row gutter={[12, 0]} align="middle">
             <Col>
               <figure className={styles.coins__img}>
@@ -212,9 +216,9 @@ const Dashboard: React.FC = (): JSX.Element => {
           <span className={`${styles.coins__text} ${styles.success}`}>
             +141.42 (+1.03)
           </span>
-        </div>
+        </Card>
 
-        <div className={styles.coins}>
+        <Card loading={balancesStatus === 'pending'} bodyStyle={{ padding: 0 }} className={styles.coins}>
           <Row gutter={[12, 0]} align="middle">
             <Col>
               <figure className={styles.coins__img}>
@@ -233,9 +237,9 @@ const Dashboard: React.FC = (): JSX.Element => {
           <span className={`${styles.coins__text} ${styles.success}`}>
             +55.42 (+1.16)
           </span>
-        </div>
+        </Card>
 
-        <div className={styles.coins}>
+        <Card loading={balancesStatus === 'pending'} bodyStyle={{ padding: 0 }} className={styles.coins}>
           <Row gutter={[12, 0]} align="middle">
             <Col>
               <figure className={styles.coins__img}>
@@ -254,9 +258,9 @@ const Dashboard: React.FC = (): JSX.Element => {
           <span className={`${styles.coins__text} ${styles.success}`}>
             +141.42 (+1.03)
           </span>
-        </div>
+        </Card>
 
-        <div className={styles.coins}>
+        <Card loading={balancesStatus === 'pending'} bodyStyle={{ padding: 0 }} className={styles.coins}>
           <Row gutter={[12, 0]} align="middle">
             <Col>
               <figure className={styles.coins__img}>
@@ -275,9 +279,9 @@ const Dashboard: React.FC = (): JSX.Element => {
           <span className={`${styles.coins__text} ${styles.danger}`}>
             -141.42 (-1.03)
           </span>
-        </div>
+        </Card>
 
-        <div className={styles.coins}>
+        <Card loading={balancesStatus === 'pending'} bodyStyle={{ padding: 0 }} className={styles.coins}>
           <Row gutter={[12, 0]} align="middle">
             <Col>
               <figure className={styles.coins__img}>
@@ -296,9 +300,9 @@ const Dashboard: React.FC = (): JSX.Element => {
           <span className={`${styles.coins__text} ${styles.danger}`}>
             -8.42 (-0.03)
           </span>
-        </div>
+        </Card>
 
-        <div className={styles.coins}>
+        <Card loading={balancesStatus === 'pending'} bodyStyle={{ padding: 0 }} className={styles.coins}>
           <Row gutter={[12, 0]} align="middle">
             <Col>
               <figure className={styles.coins__img}>
@@ -317,7 +321,7 @@ const Dashboard: React.FC = (): JSX.Element => {
           <span className={`${styles.coins__text} ${styles.success}`}>
             +47.25 (+2.05)
           </span>
-        </div>
+        </Card>
       </Marquee>
 
       <Row gutter={[12, 24]} className={styles.spacer}>
@@ -518,6 +522,92 @@ const Dashboard: React.FC = (): JSX.Element => {
           </Card>
         </Col>
       </Row>
+
+      <Drawer
+        width={550}
+        visible={drawer}
+        onClose={toggleDrawer}
+      >
+        <h1 className={styles.drawer__title}>What is the TóróNet Platform ?</h1>
+        <img className={styles.drawer__img} src="https://www.datadriveninvestor.com/wp-content/uploads/2018/12/blockchain-ecobitcoin-magazine.width-800.jpg" alt="toronet" />
+        <p className={styles.drawer__text}>
+          <strong>TóróNet</strong> is a platform built for financial aspirations of human communities,
+          specifically beyond the reach of the traditional financial industry as well as
+          most blockchain platforms. <br /><br /> <strong>Tóró token</strong> is the basic token
+          of the TóróNet platform. The Tóró is a stablecoin backed by true reserves.
+        </p>
+        <p className={styles.drawer__text}>
+          There are 3 key differentiators which make the TóróNet platform
+          unique and designed in the opposite of the majority of
+          blockchain projects. These are:
+        </p>
+
+        <div className={styles.drawer__list}>
+          <div className={styles.drawer__item}>
+            <h4 className={styles.drawer__item__title}>
+              1. Real world impact first
+            </h4>
+            <p className={styles.drawer__item__text}>
+              Everything done at TóróNet, including current and future
+              projects, is designed to respond to real-world problems.
+              Projects on Tórónet are easy to explain and understand because
+              they solve concrete problems in the real world. TóróNet
+              projects are also admitted to the platform based on votes
+              within the community, which helps to weed out doubtful
+              projects and admit only projects of value to the community.
+            </p>
+          </div>
+          <div className={styles.drawer__item}>
+            <h4 className={styles.drawer__item__title}>
+              2. Interoperable Platform
+            </h4>
+            <p className={styles.drawer__item__text}>
+              We believe in an emerging financial landscape that is
+              multi-platform, and interoperable. This emerging ecosystem
+              will include traditional fiat currencies, digital and
+              cryprocurrencies, and central bank digital currencies (CBDCs).
+              Several countries have already introduced CBDCs in launched
+              and pilot stages.<br /><br /> And there are multiple blockchains with
+              projects that are of interest to different users. This new
+              financial landscape should afford users more freedom to deploy
+              their assets to projects they want easily rather than having
+              them locked on a specific platform. TóróNet is engineered to
+              allow users do just that moving their assets easily to and
+              from the platform. The TóróNet native wallet supports
+              bridging assets from other platforms, and continues to
+              add bridged assets as the community demands it.
+            </p>
+          </div>
+          <div className={styles.drawer__item}>
+            <h4 className={styles.drawer__item__title}>
+              3. Support for Stablecoins
+            </h4>
+            <p className={styles.drawer__item__text}>
+              Most communities find financial adoption easier when
+              using curriencies and denominations that market partifipants
+              have been familiar with for decades and even centuries.
+              As a result, we prioritize support for local stablecoin
+              versions of local currencies to provide easy on-ramp to
+              local communities. However, we also beileve is safe
+              stablecoins, and all stablecoins admitted to the platform
+              must be fully and transparently backed by the underlying
+              assets.
+            </p>
+          </div>
+          <div className={styles.drawer__item}>
+            <h4 className={styles.drawer__item__title}>
+              4. Creation of value and reproductive economies
+            </h4>
+            <p className={styles.drawer__item__text}>
+              TóróNet creates value by solving real-world problems,
+              not by creating demand. We do this by carefully admitting
+              projects and solutions that leverage technology to jumpstart
+              ecosystems that are self-sustaining. Projects built on TóróNet
+              address major issues in a financially sustainable fashion.
+            </p>
+          </div>
+        </div>
+      </Drawer>
     </AppLayout>
   )
 }
