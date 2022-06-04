@@ -10,9 +10,9 @@ The Toronet dashboard client is proudly powered by popular javascript "framework
 
 ## Screenshots
 
-## ![landing-page](/screenshots/screen-1.png)
+![landing-page](/screenshots/screen-1.png)
 
-![dashboard](/screenshots/screen-3.png)
+![dashboard](/screenshots/screen-2.png)
 
 ## How to use
 
