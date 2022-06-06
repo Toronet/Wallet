@@ -26,6 +26,16 @@ npm install
 npm start
 ```
 
+## Deployments
+
+To deploy the project kindly run the command from the root of the project using your terminal of choice.
+
+```js
+npm run build
+```
+
+React will "spit" out a production ready bundle in a folder called **build**. Upload said folder to your hosting service of choice
+
 ## Folder structure walkthrough
 
 The codebase is broken down into serveral sections. Find below a brief breakdown of each section and their corresponding responsibilties.
