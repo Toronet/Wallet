@@ -9,6 +9,7 @@ export interface IAuthUserPayload{
 
 export type TAuthState = {
     status: "idle" | "pending" | "succeeded" | "failed";
+    verifying: "idle" | "pending" | "succeeded" | "failed";
     registering: "idle" | "pending" | "succeeded" | "failed";
     user: IAuthUser | null;
     error: any;

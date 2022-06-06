@@ -8,17 +8,20 @@ import styles from './styles.module.less';
 
 import IMAGES from '../../constants/images';
 import { useAppSelector, useAppDispatch } from '../../hooks/redux';
-import { loginUser, logoutUser, registerUser } from '../../redux/auth/auth-slice';
+import { loginUser, logoutUser, registerUser, saveUserData, verifyUser } from '../../redux/auth/auth-slice';
 
 const ValidIcon = <CheckCircleFilled style={{ marginRight: '.5rem', color: '#00b256' }} />;
 const InvalidIcon = <CloseCircleFilled style={{ marginRight: '.5rem', color: '#de2f40' }} />;
 
 const Landing: React.FC = (): JSX.Element => {
-  const { user, status, registering } = useAppSelector(state => state.auth);
+  const { user, status, registering, verifying } = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
 
-  const [open, setOpen] = React.useState<boolean>(false);
   const [address, setAddress] = React.useState<string>('');
+  const [addressModal, setAddressModal] = React.useState<boolean>(false);
+  const [addressPassword, setAddressPassword] = React.useState<string>('');
+
+  const [open, setOpen] = React.useState<boolean>(false);
   const [password, setPassword] = React.useState<string>('');
   const [confirmPassword, setConfirmPassword] = React.useState<string>('');
   const [isPasswordValid, setIsPasswordValid] = React.useState<boolean>(false);
@@ -58,12 +61,32 @@ const Landing: React.FC = (): JSX.Element => {
     }
 
     const userPayload = { op: 'isaddress', name: 'addr', value: address };
-    const { error, payload }: any = await dispatch(loginUser(userPayload));
+    const { payload }: any = await dispatch(loginUser(userPayload));
     if (!payload.result) {
       message.error(payload.error);
       return;
     }
-    else if (!error) {
+    else {
+      setAddressModal(true);
+    }
+  }
+
+  const verifyPassword = async (): Promise<any> => {
+    if (!addressPassword) {
+      return message.error('Password is required');
+    }
+    const userPayload = {
+      name: 'addr',
+      value: address,
+      name2: 'pwd',
+      value2: addressPassword
+    };
+    const { payload }: any = await dispatch(verifyUser(userPayload));
+    if (!payload.result) {
+      message.error(payload.error);
+    }
+    else {
+      dispatch(saveUserData({ addr: address }));
       navigate('/dashboard', { replace: true });
     }
   }
@@ -110,6 +133,11 @@ const Landing: React.FC = (): JSX.Element => {
   const handleAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setAddress(value);
+  }
+
+  const closeAddressModal = (): void => {
+    setAddressModal(false);
+    setAddressPassword('');
   }
 
   return (
@@ -254,6 +282,41 @@ const Landing: React.FC = (): JSX.Element => {
             rules={["minLength", "specialChar", "number", "capital", "match"]}
           />
         </Form>
+      </Modal>
+
+      <Modal
+        centered
+        maskClosable={false}
+        visible={addressModal}
+        onCancel={closeAddressModal}
+        okText="CONTINUE"
+        onOk={verifyPassword}
+        okButtonProps={{
+          size: 'large',
+          icon: <CheckCircleFilled />,
+          loading: verifying === 'pending',
+        }}
+        cancelButtonProps={{
+          style: { display: 'none' }
+        }}
+      >
+        <h3 className={styles.modal__title}>
+          Authentication Required!
+        </h3>
+        <p className={styles.modal__text}>
+          For security reasons, please enter the password
+          to your Toronet address: <i>{address}</i>.
+          We're simply making sure you are who you say you are
+        </p>
+
+        <Input.Password
+          onPressEnter={verifyPassword}
+          value={addressPassword}
+          onChange={(e) => setAddressPassword(e.target.value)}
+          placeholder="Enter your Toronet password"
+          size="large"
+          disabled={verifying === 'pending'}
+        />
       </Modal>
     </section>
   )

@@ -29,6 +29,27 @@ export const loginUser = createAsyncThunk<
     }
 );
 
+export const verifyUser = createAsyncThunk<
+    IAuthUser,
+    {name: string; value: string; name2: string; value2: string;},
+    {rejectValue: IRequestError}
+>(
+    "AUTH/VERIFY-USER", async (payload, thunkApi) => {
+        try {
+            const config = {headers: {"Content-Type": "application/json"}};
+            const res = await axiosRequest.get(`/keystore?op=verifykey&params[0][name]=${payload.name}&params[0][value]=${payload.value}&params[1][name]=${payload.name2}&params[1][value]=${payload.value2}`, config);
+            return res.data;
+        } 
+        catch (err:any) {
+            let error: AxiosError<IRequestError> = err;
+            if(!error.response){
+                throw err;
+            }
+            return thunkApi.rejectWithValue(error.response.data)
+        }
+    }
+);
+
 export const registerUser = createAsyncThunk<
     {address: string; message: string; result: boolean;},
     IAuthUserPayload,
@@ -54,11 +75,16 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: {
         status: 'idle',
+        verifying: 'idle',
         registering: 'idle',
         user: ls.get(key, {decrypt: true}),
         error: null
     } as TAuthState,
     reducers: {
+        saveUserData: (state, {payload}) => {
+            state.user = payload;
+            ls.set(key, payload, {encrypt: true});
+        },
         logoutUser: (state) => {
             state.user = null;
             ls.remove(key);
@@ -70,10 +96,9 @@ const authSlice = createSlice({
             state.status = 'pending';
             state.error = '';
         })
-        builder.addCase(loginUser.fulfilled, (state, {payload}) => {
-            state.user = payload
+        builder.addCase(loginUser.fulfilled, (state, _) => {
+            //state.user = payload
             state.status = 'succeeded';
-            ls.set(key, payload, {encrypt: true});
         })
         builder.addCase(loginUser.rejected, (state, {payload, error}) => {
             state.status = 'failed';
@@ -111,9 +136,33 @@ const authSlice = createSlice({
                 message.error(error.message)
             }
         })
+
+        //@: verify user
+        builder.addCase(verifyUser.pending, (state, _) => {
+            state.verifying = 'pending';
+            state.error = '';
+        })
+        builder.addCase(verifyUser.fulfilled, (state, {payload}) => {
+            state.verifying = 'succeeded';
+        })
+        builder.addCase(verifyUser.rejected, (state, {payload, error}) => {
+            state.verifying = 'failed';
+            
+            if(payload?.errors){
+                state.error = payload.errors;
+            }
+            else if(payload?.message){
+                state.error = payload.message;
+                message.error(payload.message);
+            }
+            else{
+                state.error = error.message;
+                message.error(error.message)
+            }
+        })
     },
 });
 
-export const {logoutUser} = authSlice.actions;
+export const {logoutUser, saveUserData} = authSlice.actions;
 
 export default authSlice.reducer;
